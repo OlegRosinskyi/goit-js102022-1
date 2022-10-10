@@ -576,4 +576,114 @@ console.log(checkFruit("plum"));
 //Вызов функции checkFruit() со случайным словом возвращает правильное значение boolean
 //В функции использовался метод includes
 //--------------------------------------------------------------------------------------------------------
+//Напиши функцию getCommonElements(array1, array2) которая получает два массива произвольной длины в параметры array1 и array2, и возвращает новый массив, состоящий из тех элементов, которые присутствуют в обоих исходных массивах.
+function getCommonElements(array1, array2) {
+  // Change code below this line
+
+  let nowArray = [];
+for (let i = 0 ; i < array1.length; i += 1  )
+{  
+  if (array2.includes(array1[i]))  { nowArray.push(array1[i]); }
+}
+ 
+ return nowArray;
+ 
+  // Change this line
+}
+console.log(getCommonElements([1, 6, 3], [2, 4]));
+
+ // Change code above this line
+ //Вызов getCommonElements([1, 2, 3], [2, 4]) возвращает [2]
+//Вызов getCommonElements([1, 2, 3], [2, 1, 17, 19]) возвращает [1, 2]
+//Вызов getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]) возвращает [12, 27, 3]
+//Вызов getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]) возвращает [10, 30, 40]
+//Вызов getCommonElements([1, 2, 3], [10, 20, 30]) возвращает []
+//Вызов функции getCommonElements() со случайными двумя массивами возвращает правильный массив
+//В цикле for использовались методы includes и push
+
+
+//=========================================================================================================
+//Инструкция for...of объявляет цикл, перебирающий итерируемые объекты, такие как массивы и строки. Тело цикла будет выполняться для значения каждого элемента. Это хорошая замена циклу for, если не нужен доступ к счётчику итерации.
+function calculateTotalPrice(orders) {
+  let total = 0;
+  // Change code below this line
+
+  for (let order of orders) {
+    total += order;
+  }
+
+  // Change code above this line
+  return total;
+}
+//Вызов функции calculateTotalPrice([12, 85, 37, 4]) возвращает 138
+//Вызов функции calculateTotalPrice([164, 48, 291]) возвращает 503
+//Вызов функции calculateTotalPrice([412, 371, 94, 63, 176]) возвращает 1116
+//Вызов функции calculateTotalPrice([]) возвращает 0
+//Вызов функции calculateTotalPrice() со случайным массивом чисел возвращает правильную сумму
+//--------------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
+//Выполни рефакторинг функции filterArray(numbers, value) заменив цикл for на for...of.
+
+function filterArray(numbers, value) {
+  // Change code below this line
+  const filteredNumbers = [];
+
+  for (let number of numbers) {
+  
+
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  }
+
+  return filteredNumbers;
+  // Change code above this line
+}
+//Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5]
+//Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5]
+//Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает []
+//Вызов функции filterArray([12, 24, 8, 41, 76], 38) возвращает [41, 76]
+//Вызов функции filterArray([12, 24, 8, 41, 76], 20) возвращает [24, 41, 76]
+//Вызов функции filterArray() со случайным массивом и числом возвращает правильный массив
+//Функция calculateTotalPrice() использует цикл for..of
+
+//======================================================================================================
+const a = 3 %  1;
+const b = 4 % 3;
+const c = 11 % 4;
+const d = 12 % 7;
+const e = 8 % 6;
+
+
+//Объявлена переменная a
+//Значение переменной a это число 0
+//Объявлена переменная b
+//Значение переменной b это число 1
+//Объявлена переменная c
+//Значение переменной c это число 3
+//Объявлена переменная d
+//Значение переменной d это число 5
+//Объявлена переменная e
+//Значение переменной e это число 2
+
+//=================================================================================
+//Напиши функцию getEvenNumbers(start, end) которая возвращает массив всех чётных чисел от start до end. Чётным считается число которое делится на 2 без остатка (10 % 2 === 0).
+function getEvenNumbers(start, end) {
+  // Change code below this line
+let nowArray = []; 
+for ( let i = 0; i < (end - start+1); i +=1 ) { console.log((start+i)%2);  
+  if ( (start+i) % 2 === 0 ) { nowArray.push(start+i); }}
+
+return nowArray;
+
+   // Change code above this line
+ }
+console.log(getEvenNumbers(2, 5));
+//Вызов функции getEvenNumbers(2, 5) возвращает [2, 4]
+//Вызов функции getEvenNumbers(3, 11) возвращает [4, 6, 8, 10]
+//Вызов функции getEvenNumbers(6, 12) возвращает [6, 8, 10, 12]
+//Вызов функции getEvenNumbers(8, 8) возвращает [8]
+//Вызов функции getEvenNumbers(7, 7) возвращает []
+//Вызов функции getEvenNumbers() со случайными start и end возвращает правильный массив
 }
