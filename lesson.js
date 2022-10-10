@@ -686,4 +686,66 @@ console.log(getEvenNumbers(2, 5));
 //Вызов функции getEvenNumbers(8, 8) возвращает [8]
 //Вызов функции getEvenNumbers(7, 7) возвращает []
 //Вызов функции getEvenNumbers() со случайными start и end возвращает правильный массив
+
+//=====================================================================================================
+//Прервать выполнение цикла можно в любой момент. Для этого существует оператор break, который полностью прекращает выполнение цикла и передаёт управление на строку за его телом.
+
+const start = 6;
+const end = 27;
+let number;
+
+for (let i = start; i < end; i += 1) {
+  if (i % 5 === 0) {
+    number = i; break;
+  }
+}
+//
+//Объявлена переменная start со значением 6
+//Объявлена переменная end со значением 27
+//Объявлена переменная number без инициализации
+//Итоговое значение переменной number равно 10
+//В цикле for используется break для выхода до завершения всех итераций цикла
+
+//-------------------------------------------------------------------------------------------------------
+//Если цикл находится в теле функции, то оператор break не прекращает выполнение функции, а только прервёт цикл. Для того чтобы прерывать выполнение сразу цикла и функции есть оператор return. 
+function findNumber(start, end, divisor) {
+  // Change code below this line
+  let number;
+
+  for (let i = start; i < end; i += 1) {
+    if (i % divisor === 0) {
+      number = i;
+      return number;
+    }
+  }
+  //Вызов findNumber(2, 6, 5) возвращает 5
+  //Вызов findNumber(8, 17, 3) возвращает 9
+  //Вызов findNumber(6, 9, 4) возвращает 8
+  //Вызов findNumber(16, 35, 7) возвращает 21
+  //Вызов findNumber() со случайным набором чисел возвращает верный результат
+  //В цикле for не должен использоваться break для выхода до завершения всех итераций цикла
+  //return number;
+  // Change code above this line
+}
+--=======================================================================================================================
+//Напиши функцию includes(array, value), которая делает тоже самое, что и метод массива //массив.includes(значение) - проверяет, есть ли в массиве array значение value, возвращая true если есть //и false в противном случае.
+function includes(array, value) {
+  // Change code below this line
+for (let i = 0; i < array.length; i += 1) {
+    if (array[i] === value) { return true;}}
+     return false;
+  // Change code above this line
+}
+console.log(includes([1, 2, 3, 4, 5], 3));
+
+//Вызов includes([1, 2, 3, 4, 5], 3) возвращает true
+//Вызов includes([1, 2, 3, 4, 5], 17) возвращает false
+//Вызов includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter") возвращает true
+//Вызов includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Uranus") возвращает false
+//Вызов includes(["apple", "plum", "pear", "orange"], "plum") возвращает true
+//Вызов includes(["apple", "plum", "pear", "orange"], "kiwi") возвращает false
+//Вызов includes() для случайного массива со случайным value возвращает верный boolean
+//В функции includes используется for, return, но не метод массива includes
+
+
 }
