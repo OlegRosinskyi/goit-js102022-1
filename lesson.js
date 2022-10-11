@@ -747,5 +747,131 @@ console.log(includes([1, 2, 3, 4, 5], 3));
 //Вызов includes() для случайного массива со случайным value возвращает верный boolean
 //В функции includes используется for, return, но не метод массива includes
 
+//============================================================================================
+//----------------------ОБ'ЕКТИ----------------------------------------------------------------
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+   descr: "Spacious apartment in the city center",
+ rating: 4,
+ price: 2153,
+ tags: ["premium", "promoted", "top"],
+ };
+//Значением свойства может быть другой объект. Это используется для хранения вложенных и группированных данных.
 
+//------------------------------------------------------------------------------------------------------------
+////Значением свойства может быть другой объект. Это используется для хранения вложенных и группированных данных.
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
+  owner: {
+    name: "Henry",
+    phone: "982-126-1588",
+    email: "henry.carter@aptmail.com",
+  },
+};
+
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
+  owner: {
+    name: "Henry",
+    phone: "982-126-1588",
+    email: "henry.carter@aptmail.com",
+  },
+};
+
+//===============================================================================================================
+//Первый способ получить доступ к свойству объекта это синтаксис обьект.ключ_свойства. Синтаксис «через точку» используется в большинстве случаев и подходит тогда, когда мы заранее знаем имя (ключ) свойства к которому хотим получить доступ.
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
+};
+
+// Change code below this line
+const aptRating = apartment.rating;
+console.log(aptRating);
+const aptDescr = apartment.descr;
+console.log(aptDescr);
+const aptPrice = apartment.price;
+console.log(aptPrice);
+const aptTags = apartment.tags;
+console.log(aptTags);
+// Change code above this line
+//===================================================================================================
+//Для доступа к вложенным свойствам используется цепочка обращений «через точку». 
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
+  owner: {
+    name: "Henry",
+    phone: "982-126-1588",
+    email: "henry.carter@aptmail.com",
+  },
+};
+
+// Change code below this line
+const ownerName = apartment.owner.name;
+console.log(ownerName);
+const ownerPhone = apartment.owner.phone;
+console.log(ownerPhone);
+const ownerEmail = apartment.owner.email;
+console.log(ownerEmail);
+const numberOfTags = apartment.tags.length;
+console.log(numberOfTags);
+const firstTag = apartment.tags[0];
+console.log(firstTag);
+const lastTag = apartment.tags[numberOfTags-1];
+console.log(lastTag);
+// Change code above this line
+//-----------------------------------------------------------------------------------------------------------
+//Второй способ получить доступ к свойству объекта это синтаксис обьект["ключ_свойства"]. 
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
+};
+
+// Change code below this line
+const aptRating = apartment["rating"];
+console.log(aptRating);
+const aptDescr = apartment["descr"];
+console.log(aptDescr);
+const aptPrice = apartment["price"];
+console.log(aptPrice);
+const aptTags = apartment["tags"];
+console.log(aptTags);
+// Change code above this line
+//===================================================================================================================
+//После того, как объект создан, значение его свойств можно изменить. Для этого необходимо обратиться к ним по имени, например, «через точку», и присвоить новое значение.
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
+  owner: {
+    name: "Henry",
+    phone: "982-126-1588",
+    email: "henry.carter@aptmail.com",
+  },
+};
+apartment.price = 5000;
+apartment.rating = 4.7;
+apartment.owner.name = "Henry Sibola";
+apartment.tags.push("trusted");
+// Change code below this line
 }
