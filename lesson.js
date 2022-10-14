@@ -935,4 +935,250 @@ console.log(product.image);
   //  Значение вложенного свойства price это число 2500
   //  Значение вложенного свойства image это строка "https://via.placeholder.com/640x480"
   //  Значение вложенного свойства tags это массив ["on sale", "trending", "best buy"]
+
+  //Бывают ситуации, когда при объявлении обьекта необходимо добавить свойство с именем, которое мы заранее не знаем, потому что оно хранится как значение переменной или как результат выполнения функции.
+const emailInputName = "email";
+const passwordInputName = "password";
+
+const credentials = {
+  // Change code below this line
+
+[emailInputName]: "henry.carter@aptmail.com",
+  [passwordInputName]: "jqueryismyjam",
+   // Change code above this line
+};
+console.log(credentials.email);
+console.log(credentials.password);
+//
+    //Объявлена переменная credentials
+    //Значение переменной credentials это объект
+    //В объекте credentials есть свойство email
+    //Значение вложенного свойства email это строка "henry.carter@aptmail.com"
+    //В объекте credentials есть свойство password
+    //Значение вложенного свойства password это строка "jqueryismyjam"
+  //========================================================================================================
+  //В отличии от массива или строки, объект - это не итерируемая сущность, то есть его нельзя перебрать //циклами for или for...of. Для перебора объектов используется специальный цикл for...in, который //перебирает ключи объекта object.
+const apartment = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+const keys = [];
+const values = [];
+for (key in apartment) {
+  keys.push(key);
+  values.push(apartment[key]);
+  
+}
+console.log(keys);
+console.log(values);
+    //Объявлена переменная apartment
+    //Значение переменной apartment это объект
+    //Объявлена переменная keys
+    //Значение переменной keys это массив ["descr", "rating", "price"]
+    //Объявлена переменная values
+    //Значение переменной values это массив ["Spacious apartment in the city center", 4, 2153]
+
+// Change code below this line
+//============================================================================================================
+  //Разберём концепцию собственных и несобственных свойств объекта и научимся правильно использовать цикл //for...in.
+//  Метод Object.create(animal) создаёт и возвращает новый объект, связывая его с объектом animal. //Поэтому можно получить значение свойства legs обратившись к нему как dog.legs, хотя его нет в объекте //dog - это несобственное свойство из объекта animal.
+const keys = [];
+const values = [];
+const advert = {
+  service: "apt",
+};
+const apartment = Object.create(advert);
+apartment.descr = "Spacious apartment in the city center";
+apartment.rating = 4;
+apartment.price = 2153;
+
+for (const key in apartment) {
+  // Change code below this line
+if (apartment.hasOwnProperty(key))
+ {keys.push(key);
+  values.push(apartment[key]);};
+
+  // Change code above this line
+}
+console.log(keys);
+console.log(values);
+//
+  //  Объявлена переменная advert.
+  //  Значение переменной advert это объект.
+  //  Объявлена переменная apartment.
+  //  Значение переменной apartment это объект.
+  //  Объявлена переменная keys.
+  //  Значение переменной keys это массив ["descr", "rating", "price"].
+  //  Объявлена переменная values.
+  //  Значение переменной values это массив ["Spacious apartment in the city center", 4, 2153].
+ 
+ //=============================================================================================================
+  ////Напиши функцию countProps(object), которая считает и возвращает количество //собственных свойств объекта в параметре object. Используй переменную propCount для //хранения количества свойств объекта.
+function countProps(object) {
+  let propCount = 0;
+  // Change code below this line
+for ( const key in object)
+  if (object.hasOwnProperty(key)) {propCount +=1; };
+  // Change code above this line
+  console.log(propCount);
+  return propCount;
+  
+}
+
+   // Объявлена функция countProps(object)
+   // Вызов countProps({}) возвращает 0
+   // Вызов countProps({ name: "Mango", age: 2 }) возвращает 2
+   // Вызов countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }) возвращает 3
+   // Функция подсчитывает только собственные свойства объекта
+  //=============================================================================================================
+  //У встроенного класса Object есть несколько полезных методов для работы с объектами. Первый из них это //Object.keys(obj), который принимает объект и возвращает массив ключей его собственных свойств. Если в //объекте нет свойств, метод вернёт пустой массив.
+const apartment = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+const values = [];
+// Change code below this line
+const keys = Object.keys(apartment);
+for ( const key of keys)
+  { values.push(apartment[key])};
+//const keys = Object.keys(apartment);
+
+   // Объявлена переменная apartment.
+   // Значение переменной apartment это объект.
+   // Объявлена переменная keys.
+   // Значение переменной keys это массив ["descr", "rating", "price"].
+   // Значение переменной keys получено с помощью метода Object.keys().
+   // Объявлена переменная values.
+   // Значение переменной values это массив ["Spacious apartment in the city center", 4, 2153].
+    //    Значение переменной values получено с помощью цикла for...of.
+  //======================================================================================================
+
+  function countProps(object) {
+  // Change code below this line
+ // let propCount = Object.keys(object).length;
+//Object.keys(object).length
+  //for (const key in object) {
+   // if (object.hasOwnProperty(key)) {
+    //  propCount += 1;
+    //}
+ // }
+console.log(Object.keys(object).length);
+  
+  return Object.keys(object).length;
+  // Change code above this line
+}
+  countProps({ mail: "poly@mail.com", isOnline: true, score: 500 });
+  
+  //==========================================================================
+//Выполни рефакторинг функции countProps(object) используя метод Object.keys() и, возможно, но необязательно, цикл for...of.
+function countProps(object) {
+  // Change code below this line
+ // let propCount = Object.keys(object).length;
+//Object.keys(object).length
+  //for (const key in object) {
+   // if (object.hasOwnProperty(key)) {
+    //  propCount += 1;
+    //}
+ // }
+  let propCount = 0;
+ 
+  const keys = Object.keys(object);
+
+  for (const key of keys) {
+    propCount += 1;
+  }
+  console.log(propCount);
+  
+  return propCount;
+  // Change code above this line
+}
+countProps({ mail: "poly@mail.com", isOnline: true, score: 500 });
+//
+ //   Объявлена функция countProps(object)
+ //   Вызов countProps({}) возвращает 0
+ //   Вызов countProps({ name: "Mango", age: 2 }) возвращает 2
+ //   Вызов countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }) возвращает 3
+ //   Функция подсчитывает только собственные свойства объекта
+ //   Функция использует метод Object.keys() и, возможно, цикл for...of
+  //==============================================================================================================
+  //Если метод Object.keys(obj) возвращает массив ключей собственных свойств объекта, то метод //Object.values(obj) возвращает массив значений его собственных свойств. Если в объекте нет свойств, метод //Object.values(obj) вернёт пустой массив.
+const apartment = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+// Change code below this line
+const keys = Object.keys(apartment);
+console.log(keys);
+const values = Object.values(apartment);
+console.log(values);
+//Запиши в переменную keys массив ключей собственных свойств объекта apartment, а в переменную values //массив всех значений его свойств. Используй методы Object.keys() и Object.values().
+
+  //=============================================================================================================
+
+  //Напиши функцию countTotalSalary(salaries) которая принимает объект зарплат, где имя свойства это имя //сотрудника, а значение свойства это зарплата. Функция должна рассчитать общую сумму зарплат сотрудников //и вернуть её. Используй переменную totalSalary для хранения общей суммы зарплаты.
+function countTotalSalary(salaries) {
+  let totalSalary = 0;
+  // Change code below this line
+//totalSalary = math
+  const keys = Object.values(salaries);
+
+  for (const key of keys) {
+    totalSalary += key;
+  }
+  console.log(totalSalary);
+  // Change code above this line
+  return totalSalary;
+}
+countTotalSalary({ mango: 100, poly: 150, alfred: 80 });
+//    Объявлена функция countTotalSalary(salaries)
+//    Вызов countTotalSalary({}) возвращает 0
+//    Вызов countTotalSalary({ mango: 100, poly: 150, alfred: 80 }) возвращает 330
+ //   Вызов countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 }) возвращает 400
+ //   Функция учитывает только собственные свойства объекта
+  //==========================================================================================================
+  //В стандартный набор повседневных задач разработчика входит манипуляция массивом однотипных объектов. Это //значит что все объекты в массиве гарантированно будут иметь одинаковый набор свойств, но с разными //значениями.
+const colors = [
+  { hex: "#f44336", rgb: "244,67,54" },
+  { hex: "#2196f3", rgb: "33,150,243" },
+  { hex: "#4caf50", rgb: "76,175,80" },
+  { hex: "#ffeb3b", rgb: "255,235,59" },
+];
+
+const hexColors = [];
+const rgbColors = [];
+for ( let color of colors) {hexColors.push(color.hex); rgbColors.push(color.rgb);};
+// Change code below this line
+console.log(hexColors);
+console.log(rgbColors);
+//
+  //  Объявлена переменная colors
+  //  Значение переменной colors это массив
+  //  Объявлена переменная hexColors
+  //  Значение переменной hexColors это массив ["#f44336", "#2196f3", "#4caf50", "#ffeb3b"]
+  //  Объявлена переменная rgbColors
+  //  Значение переменной rgbColors это массив ["244,67,54", "33,150,243", "76,175,80", "255,235,59"]
+  //=========================================================================================================
+  //Напиши функцию countTotalSalary(salaries) которая принимает объект зарплат, где имя свойства это имя //сотрудника, а значение свойства это зарплата. Функция должна рассчитать общую сумму зарплат сотрудников //и вернуть её. Используй переменную totalSalary для хранения общей суммы зарплаты.
+function countTotalSalary(salaries) {
+  let totalSalary = 0;
+  // Change code below this line
+//totalSalary = math
+  const keys = Object.values(salaries);
+
+  for (const key of keys) {
+    totalSalary += key;
+  }
+  console.log(totalSalary);
+  // Change code above this line
+  return totalSalary;
+}
+countTotalSalary({ mango: 100, poly: 150, alfred: 80 });
+//    Объявлена функция countTotalSalary(salaries)
+//    Вызов countTotalSalary({}) возвращает 0
+//    Вызов countTotalSalary({ mango: 100, poly: 150, alfred: 80 }) возвращает 330
+ //   Вызов countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 }) возвращает 400
+ //   Функция учитывает только собственные свойства объекта
 }
