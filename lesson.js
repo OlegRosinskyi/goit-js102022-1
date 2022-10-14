@@ -1181,4 +1181,91 @@ countTotalSalary({ mango: 100, poly: 150, alfred: 80 });
 //    Вызов countTotalSalary({ mango: 100, poly: 150, alfred: 80 }) возвращает 330
  //   Вызов countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 }) возвращает 400
  //   Функция учитывает только собственные свойства объекта
-}
+  //======================================================================================================
+  //Напиши функцию getProductPrice(productName) которая принимает один параметр productName - название //продукта. Функция ищет объект продукта с таким именем (свойство name) в массиве products и возвращает //его цену (свойство price). Если продукт с таким названием не найден, функция должна возвращать null.
+const products = [
+  { name: "Radar", price: 1300, quantity: 4 },
+  { name: "Scanner", price: 2700, quantity: 3 },
+  { name: "Droid", price: 400, quantity: 7 },
+  { name: "Grip", price: 1200, quantity: 9 },
+];
+
+function getProductPrice(productName) {
+  // Change code below this line
+  let namePrise = null;
+  for (let product of products)
+  
+    if (productName === product.name) { namePrise = product.price; };
+
+  // Change code below this line
+  console.log(namePrise);
+
+  return namePrise;
+};
+getProductPrice("Rada");
+//
+  //  Объявлена функция getProductPrice(productName).
+  //  Вызов getProductPrice("Radar") возвращает 1300.
+  //  Вызов getProductPrice("Grip") возвращает 1200.
+  //  Вызов getProductPrice("Scanner") возвращает 2700.
+  //  Вызов getProductPrice("Droid") возвращает 400.
+  //  Вызов getProductPrice("Engine") возвращает null.
+
+  //===================================================================================================
+  //Напиши функцию getAllPropValues(propName) которая принимает один параметр propName - имя (ключ) //свойства. Функция должна вернуть массив всех значений свойства с таким именем из каждого объекта в //массиве products. Если в объектах нет свойства с таким именем, функция должна вернуть пустой массив.
+const products = [
+  { name: "Radar", price: 1300, quantity: 4 },
+  { name: "Scanner", price: 2700, quantity: 3 },
+  { name: "Droid", price: 400, quantity: 7 },
+  { name: "Grip", price: 1200, quantity: 9 },
+];
+
+function getAllPropValues(propName) {
+  // Change code below this line
+  
+let sortProducts = [];
+  
+  for ( let product of products )
+  
+  if (product[propName] === undefined) {sortProducts = []; }
+  else { sortProducts.push(product[propName]); }
+
+  // Change code below this line
+ 
+
+  console.log(sortProducts);
+  return sortProducts;
+
+  // Change code above this line
+};
+getAllPropValues("name");
+//
+//    Объявлена функция getAllPropValues(propName)
+ //   Вызов getAllPropValues("name") возвращает ["Radar", "Scanner", "Droid", "Grip"]
+ //   Вызов getAllPropValues("quantity") возвращает [4, 3, 7, 9]
+ //   Вызов getAllPropValues("price") возвращает [1300, 2700, 400, 1200]
+ //   Вызов getAllPropValues("category") возвращает []
+
+//Напиши функцию calculateTotalPrice(productName) которая принимает один параметр productName - название //товара. Функция должна вернуть общую стоимость (цена * количество) товара с таким именем из массива //products.
+function calculateTotalPrice(productName) {
+  // Пиши код ниже этой строки
+  let allPrice = 2;
+  
+  for (let product of products) //{ allPrice = product.price * product.quantity; };
+  {
+    console.log(productName === product.name);
+    if (productName === product.name) { allPrice = (product.price * product.quantity); console.log(allPrice);
+  return allPrice;} 
+        else    { allPrice = 0; }  
+    // if (product[propName] === undefined) {allPrice = 0; }
+    // else { allPrice = product.price * product.quantity); }
+
+    // Change code below this line
+  };
+
+  console.log(allPrice);
+  return allPrice;
+};
+  calculateTotalPrice("Radar");
+  //----------------------------------------------------------------------------------------------------------
+  }
