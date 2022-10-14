@@ -874,4 +874,65 @@ apartment.rating = 4.7;
 apartment.owner.name = "Henry Sibola";
 apartment.tags.push("trusted");
 // Change code below this line
+  
+  //Операция добавления нового свойства после создания объекта ничем не отличается от изменения значения уже существующего свойства. 
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4.7,
+  price: 5000,
+  tags: ["premium", "promoted", "top", "trusted"],
+  owner: {
+    name: "Henry Sibola",
+    phone: "982-126-1588",
+    email: "henry.carter@aptmail.com",
+  },
+ 
+};
+//const location = {
+//    country: "",
+ // };
+apartment.area = 60;
+    apartment.rooms = 3;
+    
+apartment.location = {};
+    
+apartment.location.country = "Jamaica";
+apartment.location.city = "Kingston";
+console.log(apartment.location.country);
+  console.log(apartment.location.city);
+  
+  //===============================================================================================================
+//
+ //   Объявлена переменная apartment
+//    Значение переменной apartment это объект
+ //   Значение вложенного свойства area это число 60
+//    Значение вложенного свойства rooms это число 3
+//    Значение вложенного свойства location это объект
+//    Значение вложенного свойства location.country это строка "Jamaica"
+//    Значение вложенного свойства location.city это строка "Kingston"
+  //Иногда, при создании объекта, значение свойства необходимо взять из переменной или параметра функции с таким же именем, как и само свойство.
+const name1 = "Repair Droid";
+const price = 2500;
+const image = "https://via.placeholder.com/640x480";
+const tags = ["on sale", "trending", "best buy"];
+
+const product = {
+  name1,
+  price,
+  image,
+  tags,
+  // Change code below this line
+  // Change code above this line
+};
+console.log(product.image);
+//Дополни код объявления объекта так, чтобы у него были свойства name, price, image и tags со значениями //из переменных с аналогичными именами. Обязательно используй синтаксис коротких свойств.
+
+//
+ //   Объявлена переменная product
+  //  Значение переменной product это объект
+  //  Значение вложенного свойства name это строка "Repair Droid"
+  //  Значение вложенного свойства price это число 2500
+  //  Значение вложенного свойства image это строка "https://via.placeholder.com/640x480"
+  //  Значение вложенного свойства tags это массив ["on sale", "trending", "best buy"]
 }
