@@ -1268,4 +1268,359 @@ function calculateTotalPrice(productName) {
 };
   calculateTotalPrice("Radar");
   //----------------------------------------------------------------------------------------------------------
+  //Сложные данные всегда представлены объектом. Множественные обращения к свойствам объекта визуально загрязняют код.
+const highTemperatures = {
+  yesterday: 28,
+  today: 26,
+  tomorrow: 33,
+};
+// Change code below this line
+const { yesterday, today, tomorrow } = highTemperatures;
+//const yesterday = highTemperatures.yesterday;
+//const today = highTemperatures.today;
+//const tomorrow = highTemperatures.tomorrow;
+
+// Change code above this line
+const meanTemperature = (yesterday + today + tomorrow) / 3;
+//
+ //   Объявлена переменная highTemperatures
+ //   Значение переменной highTemperatures это объект
+ //   Объявлена переменная yesterday с помощью деструктуризации
+ //   Значение переменной yesterday это число 28
+ //   Объявлена переменная today с помощью деструктуризации
+ //   Значение переменной today это число 26
+ //   Объявлена переменная tomorrow с помощью деструктуризации
+ //   Значение переменной tomorrow это число 33
+ //   Объявлена переменная meanTemperature
+ //   Значение переменной meanTemperature это число 29
+ //   Используется синтаксис деструктуризации объекта highTemperatures
+  //---------------------------------------------------------------------------------------------------------------
+  //Для того чтобы избежать присвоения undefined при деструктуризации несуществующих свойств, можно задать переменным значения по умолчанию, которые будут присвоены только в случае когда в объекте нет свойства с таким именем.
+const highTemperatures = {
+  yesterday: 28,
+  today: 26,
+  tomorrow: 33,
+};
+// Change code below this line
+const {
+  yesterday,
+  today,
+  icon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg",
+  tomorrow,
+} = highTemperatures;
+//const yesterday = highTemperatures.yesterday;
+//const today = highTemperatures.today;
+//const tomorrow = highTemperatures.tomorrow;
+//const icon = highTemperatures.icon;
+
+// Change code above this line
+const meanTemperature = (yesterday + today + tomorrow) / 3;
+
+//
+//    Объявлена переменная highTemperatures
+ //   Значение переменной highTemperatures это объект
+ //   Объявлена переменная highTemperatures
+ //   Значение переменной highTemperatures это объект
+//    Объявлена переменная yesterday с помощью деструктуризации
+ //   Значение переменной yesterday это число 28
+ //   Объявлена переменная today с помощью деструктуризации
+ //   Значение переменной today это число 26
+  //  Объявлена переменная tomorrow с помощью деструктуризации
+ //   Значение переменной tomorrow это число 33
+ //   Объявлена переменная icon с помощью деструктуризации
+//    Значение переменной icon это строка "https://www.flaticon.com/svg/static/icons/svg/2204//2204346.svg".
+ //   Используется деструктуризация объекта
+  //==============================================================================================================
+  //При деструктуризации можно изменить имя переменной в которую распаковывается значение свойства. Сначала пишем имя свойства из которого хотим получить значение, после чего ставим двоеточие и пишем имя переменной в которую необходимо поместить значение этого свойства.
+const highTemperatures = {
+  yesterday: 28,
+  today: 26,
+  tomorrow: 33,
+};
+// Change code below this line
+const {yesterday: highYesterday, today: highToday, tomorrow: highTomorrow, icon: highIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg"} = highTemperatures;
+//const highYesterday = highTemperatures.yesterday;
+//const highToday = highTemperatures.today;
+//const highTomorrow = highTemperatures.tomorrow;
+//const highIcon = highTemperatures.icon;
+
+// Change code above this line
+const meanTemperature = (highYesterday + highToday + highTomorrow) / 3;
+
+   // Объявлена переменная highTemperatures
+   // Значение переменной highTemperatures это объект
+   // Объявлена переменная highYesterday
+   // Значение переменной highYesterday это число 28
+   // Объявлена переменная highToday
+   // Значение переменной highToday это число 26
+   // Объявлена переменная highTomorrow
+   // Значение переменной highTomorrow это число 33
+   // Объявлена переменная highIcon
+   // Значение переменной highIcon это строка "https://www.flaticon.com/svg/static/icons/svg/2204//2204346.svg"
+   // Используется деструктуризация объекта
+  
+  //===================================================================================================
+  //Для деструктуризации свойств вложенных объектов используются те же принципы, что и в трёх предыдущих упражнениях.
+const forecast = {
+  today: {
+    low: 28,
+    high: 32,
+    icon: "https://www.flaticon.com/svg/static/icons/svg/861/861059.svg",
+  },
+  tomorrow: {
+    low: 27,
+    high: 31,
+  },
+};
+// Change code below this line
+const { today: { low: lowToday, high: highToday, icon: todayIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg"  }, tomorrow: {low: lowTomorrow, high: highTomorrow, icon: tomorrowIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg"},} = forecast;
+//const highToday = forecast.today.high;
+//const lowToday = forecast.today.low;
+//const todayIcon = forecast.today.icon;
+//const highToday = high;
+//const lowToday = low;
+//const todayIcon = icon;
+
+//console.log(high);
+console.log(highToday);
+//console.log(low);
+console.log(lowToday);
+//console.log(icon);
+console.log(todayIcon);
+//const highTomorrow = forecast.tomorrow.high;
+//const lowTomorrow = forecast.tomorrow.low;
+//const tomorrowIcon = secondicon;
+//const highTomorrow = secondhigh;
+//const lowTomorrow = secondLow;
+
+//console.log(secondicon);
+console.log(tomorrowIcon);
+ 
+console.log(highTomorrow);
+ 
+console.log(lowTomorrow);
+
+
+   // Объявлена переменная forecast
+  //  Значение переменной forecast это объект
+   // Объявлена переменная highToday с помощью деструктуризации
+  //  Значение переменной highToday это число 32
+  //  Объявлена переменная lowToday с помощью деструктуризации
+ //   Значение переменной lowToday это число 28
+ //   Объявлена переменная todayIcon с помощью деструктуризации
+   // Значение переменной todayIcon это строка "https://www.flaticon.com/svg/static/icons/svg/861//  /861059.svg"
+  //  Объявлена переменная highTomorrow с помощью деструктуризации
+  //  Значение переменной highTomorrow это число 31
+  //  Объявлена переменная lowTomorrow с помощью деструктуризации
+  //  Значение переменной lowTomorrow это число 27
+ //   Объявлена переменная tomorrowIcon с помощью деструктуризации
+ //   Значение переменной tomorrowIcon это строка "https://www.flaticon.com/svg/static/icons/svg/2204// //2204346.svg"
+ //   Используется синтаксис деструктуризации объекта highTemperatures
+  //--------------------------------------------------------------------------------------------------------------
+  //======================================================================================================================
+//Если функция принимает более двух-трёх аргументов, очень просто запутаться в какой последовательности что передавать. В результате получается очень неочевидный код в месте её вызова.
+function calculateMeanTemperature(forecast) {
+  const { today: { low: todayLow, high: todayHigh }, tomorrow: { low: tomorrowLow, high: tomorrowHigh }, } = forecast;
+  // const todayLow = forecast.today.low;
+  // const todayHigh = forecast.today.high;
+  //const tomorrowLow = forecast.tomorrow.low;
+  // const tomorrowHigh = forecast.tomorrow.high;
+
+  // Change code above this line
+  console.log((todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4);
+  return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+};
+calculateMeanTemperature({ today: { low: 28, high: 32 }, tomorrow: { low: 25, high: 29 } });
+calculateMeanTemperature({ today: { low: 37, high: 40 }, tomorrow: { low: 33, high: 38 } });
+//
+   // Объявлена функция calculateMeanTemperature(forecast)
+   // В теле функции используется деструктуризация объекта
+   // В теле функции объявлена переменная todayHigh с помощью деструктуризации
+    //В теле функции объявлена переменная todayLow с помощью деструктуризации
+    //В теле функции объявлена переменная tomorrowLow с помощью деструктуризации
+    //В теле функции объявлена переменная tomorrowHigh с помощью деструктуризации
+   // Вызов calculateMeanTemperature({ today: {low: 28, high: 32}, tomorrow: {low: 25, high: 29} }) возвращает 28.5
+   // Вызов calculateMeanTemperature({ today: {low: 37, high: 40}, tomorrow: {low: 33, high: 38} }) возвращает 37
+
+  //============================================================================================================
+  //Синтаксис ... (spread) позволяет распылить коллекцию элементов (массив, строку или объект) в место, где //ожидается набор отдельных значений. Конечно есть некоторые ограничения, например нельзя распылить массив //в объект и наоборот.
+
+//Можно привести аналогию с ящиком яблок. Поставив ящик на пол не вынимая из него яблоки, получим аналог //массива значений. Если высыпать яблоки из ящика на пол, произойдёт распыление - набор отдельных значений.
+
+//Отличие всего одно - в JavaScript распыление не изменяет оригинальную коллекцию, то есть делается копия //каждого элемента. После распыления останется и ящик полный яблок, и копия каждого яблока на полу.
+
+//Например, метод Math.max(аргументы) ищет и возвращает самый большой из аргументов (чисел), то есть //ожидает не массив значений, а произвольное количество аргументов.
+const scores = [89, 64, 42, 17, 93, 51, 26];
+// Change code below this line
+const bestScore = Math.max(...scores);
+console.log(bestScore);
+const worstScore = Math.min(...scores);
+console.log(worstScore);
+
+    //Объявлена переменная scores
+    //Значение переменной scores это массив [89, 64, 42, 17, 93, 51, 26]
+   // Объявлена переменная bestScore
+    //Значение переменной bestScore это число 93
+    //Объявлена переменная worstScore
+   // Значение переменной worstScore это число 17
+   // Для передачи аргументов методу Math.max() используется синтаксис ... на массиве scores
+    //Для передачи аргументов методу Math.min() используется синтаксис ... на массиве scores
+  //===========================================================================================================
+//========================================================
+  /Операция spread позволяет создать копию массива или «склеить» произвольное количество массивов в один //новый. Раньше для этого использовали методы slice() и concat(), но операция распыления позволяет сделать //тоже самое в более краткой форме.
+const firstGroupScores = [64, 42, 93];
+const secondGroupScores = [89, 14, 51, 26];
+const thirdGroupScores = [29, 47, 18, 97, 81];
+// Change code below this line
+const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
+const bestScore = Math.max(...allScores);
+const worstScore = Math.min(...allScores);
+//
+//    Объявлена переменная firstGroupScores
+//    Значение переменной firstGroupScores это массив [64, 42, 93]
+//    Объявлена переменная secondGroupScores
+//    Значение переменной secondGroupScores это массив [89, 14, 51, 26]
+//    Объявлена переменная thirdGroupScores
+//    Значение переменной thirdGroupScores это массив [29, 47, 18, 97, 81]
+//    Объявлена переменная allScores.
+//    Значение переменной allScores это массив [64, 42, 93, 89, 14, 51, 26, 29, 47, 18, 97, 81]
+//    Объявлена переменная bestScore
+//    Значение переменной bestScore это число 97
+//    Объявлена переменная worstScore
+//    Значение переменной worstScore это число 14
+//    При присвоении значения переменной allScores использовался синтаксис ... для заполнения массива
+//    Для передачи аргументов методу Math.max() используется синтаксис ... на массиве allScores
+//    Для передачи аргументов методу Math.min() используется синтаксис ... на массиве allScores
+  //================================================================================================
+  //Операция spread позволяет распылить свойства произвольного количества объектов в один новый.
+const defaultSettings = {
+  theme: "light",
+  public: true,
+  withPassword: false,
+  minNumberOfQuestions: 10,
+  timePerQuestion: 60,
+};
+const overrideSettings = {
+  public: false,
+  withPassword: true,
+  timePerQuestion: 30,
+};
+// Change code below this line
+const finalSettings = {...defaultSettings, ...overrideSettings};
+//
+   // Объявлена переменная defaultSettings
+   // Значение переменной defaultSettings это объект
+   // Объявлена переменная overrideSettings
+   // Значение переменной overrideSettings это объект
+   // Объявлена переменная finalSettings
+   // Значение переменной finalSettings это объект
+   // Значение свойства finalSettings.theme равно "light"
+  //  Значение свойства finalSettings.public равно "false"
+  //  Значение свойства finalSettings.withPassword равно "true"
+  //  Значение свойства finalSettings.minNumberOfQuestions равно 10
+   // Значение свойства finalSettings.timePerQuestion равно 30
+  //  При присваивании значения переменной finalSettings используется синтаксис ...
+  //------------------------------------------------------------------------------------------------------
+  //Задача. Карточки задач
+//Напиши функцию makeTask(data) которая принимает один параметр data - объект со следующими свойствами.
+
+//    text - текст задачи.
+//    category - категория задачи.
+ //   priority - приоритет задачи.
+
+function makeTask(data) {
+  
+  const completed = false;
+  const category = "General";
+  const priority = "Normal";
+  // Change code below this line
+return {completed, category, priority, ... data }
+  // Change code above this line
+}
+console.log(makeTask({ text: "Buy bread" }));
+ //   Объявлена функция makeTask(data)
+ //   Вызов makeTask({}) возвращает { category: "General", priority: "Normal", completed: false }
+ //   Вызов makeTask({ category: "Homemade", priority: "Low", text: "Take out the trash" }) возвращает { //category: "Homemade", priority: "Low", text: "Take out the trash", completed: false }
+//    Вызов makeTask({ category: "Finance", text: "Take interest" }) возвращает { category: "Finance", //priority: "Normal", text: "Take interest", completed: false }
+ //   Вызов makeTask({ priority: "Low", text: "Choose shampoo" }) возвращает { category: "General", //priority: "Low", text: "Choose shampoo", completed: false }
+ //   Вызов makeTask({ text: "Buy bread" }) возвращает { category: "General", priority: "Normal", text: //"Buy bread", completed: false }
+//----------------------------------------------------------------------------------------------------------------
+  //Операция ... (rest) позволяет собрать группу независимых элементов в новую коллекцию. Синтаксически это //близнец операции распыления, но отличить их просто - распыление это когда ... находится в правой части //операции присваивания, а сбор это когда ... находится в её левой части.
+function add(...args) {
+  // Change code above this line
+  let sum = 0;
+  for (let arg of args) {
+    sum = sum + arg;
   }
+  return sum;
+};
+console.log(add(32, 6, 13, 19, 8));
+//
+//   Объявлена функция add
+ //   Функция add использует параметр args
+ //   Для сбора аргументов в переменную args, в подписи функции используется синтаксис ... (оперетор rest)
+ //   Вызов add(15, 27) возвращает 42
+ //   Вызов add(12, 4, 11, 48) возвращает 75
+ //   Вызов add(32, 6, 13, 19, 8) возвращает 78
+ //   Вызов add(74, 11, 62, 46, 12, 36) возвращает 241
+  //-----------------------------------------------------------------------------------------------------
+  //Операция ... (rest) также позволяет собрать в массив только ту часть аргументов, которая необходима, //объявив параметры до «сбора».
+// Change code below this line
+function addOverNum(firstNumber, secondNumber, ...otherArgs) {
+  let total = 0;
+
+  for (const otherArg of otherArgs) {
+    if (firstNumber < otherArg)
+    {total += otherArg;};
+  };
+if (firstNumber < secondNumber)
+    {total += secondNumber;};
+  
+  return total;
+  // Change code above this line
+};
+console.log(addOverNum(50, 15, 27));
+//
+ //   Объявлена функция addOverNum()
+ //   Вызов addOverNum(50, 15, 27) возвращает 0
+ //   Вызов addOverNum(10, 12, 4, 11, 48, 10, 8) возвращает 71
+ //   Вызов addOverNum(15, 32, 6, 13, 19, 8) возвращает 51
+ //   Вызов addOverNum(20, 74, 11, 62, 46, 12, 36) возвращает 218
+  
+  //-------------------------------------------------------------------------------------------------------
+  //Функция findMatches() принимает произвольное количество аргументов. Первым аргументом всегда будет //массив чисел, а остальные аргументы будут просто числами.
+function findMatches(firstNumber, secondNumber, ...otherArgs) {
+  const matches = []; // Don't change this line
+  console.log(firstNumber);
+  console.log(firstNumber.length);
+  console.log(secondNumber);
+  console.log(otherArgs);
+
+  for (let i = 0; i < firstNumber.length; i += 1)
+
+  {console.log(firstNumber[i] );
+    if (firstNumber[i] === secondNumber)
+  { matches.push(secondNumber); };
+    
+    for (const otherArg of otherArgs) {
+    if (firstNumber[i] === otherArg)
+    { matches.push(otherArg); };
+    };
+  };
+    //for (let i = 0; i < array.length; i += 1) {
+    //if (array[i] === value) { return true;}}
+    // return false;
+ 
+  // Change code above this line
+  return matches;
+};
+
+console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7));
+
+//
+    //Объявлена функция findMatches()
+   // Вызов findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) возвращает [1, 2]
+   // Вызов findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2) возвращает [17, 89, 2]
+   // Вызов findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41) возвращает [24, 9, 41]
+  //  Вызов findMatches([63, 11, 8, 29], 4, 7, 16) возвращает []
+}
