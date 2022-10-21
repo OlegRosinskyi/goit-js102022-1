@@ -1623,4 +1623,139 @@ console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7));
    // Вызов findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2) возвращает [17, 89, 2]
    // Вызов findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41) возвращает [24, 9, 41]
   //  Вызов findMatches([63, 11, 8, 29], 4, 7, 16) возвращает []
+
+  //------------------------------------------------------------------------------------------------------------
+  //До сих пор мы рассматривали объекты только как хранилища взаимосвязанных данных, например информация о //книге и т. п. Объекты-хранилища обычно находятся в массиве таких же объектов, который представляет //коллекцию однотипных элементов.
+
+Объекты могут хранить не только данные, но и функции для работы с этими данными - методы. Если значение свойства это функция, такое свойство называется методом объекта.
+const bookShelf = {
+  // Change code below this line
+  books: ["The last kingdom", "The guardian of dreams"],
+  getBooks() {
+    return "Returning all books";
+  },
+  addBook(bookName) {
+    return `Adding book ${bookName}`;
+  },
+  removeBook(bookName) {
+    return `Deleting book ${bookName}`;
+  },
+  updateBook(oldName, newName) {
+    return `Updating book ${oldName} to ${newName}`;
+  },
+  // Change code above this line
+};
+//
+
+ //   Объявлена переменная bookShelf
+
+  //  Значение переменной bookShelf это объект
+
+  //  Значение свойства bookShelf.getBooks это метод объекта
+
+  //  Вызов метода bookShelf.getBooks() возвращает строку "Returning all books"
+
+  //  Значение свойства bookShelf.addBook это метод объекта
+
+  //  Вызов метода bookShelf.addBook("Haze") возвращает строку "Adding book Haze"
+
+  //  Значение свойства bookShelf.removeBook это метод объекта
+
+  //  Вызов метода bookShelf.removeBook("Red sunset") возвращает строку "Deleting book Red sunset"
+
+  //  Значение свойства bookShelf.updateBook это метод объекта
+
+  //  Вызов метода bookShelf.updateBook("Sands of dune", "Dune") возвращает строку "Updating book Sands //of dune to Dune"
+
+
+  //----------------------------------------------------------------------------------------------------------
+  
+//Функция calculateTotalPrice(orderedItems) принимает один параметр orderedItems - массив чисел, и рассчитывает общую сумму его элементов, которая сохраняется в переменной totalPrice и возвращается как результат работы функции.
+//Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach.
+  function calculateTotalPrice(orderedItems) {
+  let totalPrice = 0;
+  // Change code below this line
+    
+  orderedItems.forEach((orderedItem) => { totalPrice += orderedItem; return totalPrice;});
+return totalPrice;
+ 
+};
+  console.log(calculateTotalPrice([12, 85, 37, 4]));
+  
+    //Объявлена функция calculateTotalPrice(orderedItems)
+    //Для перебора массива orderedItems использован метод forEach
+    //Вызов функции calculateTotalPrice([12, 85, 37, 4]) возвращает 138
+    //Вызов функции calculateTotalPrice([164, 48, 291]) возвращает 503
+    //Вызов функции calculateTotalPrice([412, 371, 94, 63, 176]) возвращает 1116
+    //Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+
+//---------------------------------------------------------------------------------------------------------
+  //Функция filterArray(numbers, value) принимает массив чисел numbers и возвращает новый массив, в котором будут //только те элементы оригинального массива, которые больше чем значение параметра value.
+
+Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach.
+function filterArray(numbers, value) {
+  const filteredNumbers = [];
+  // Change code below this line
+numbers.forEach((number) => { if (number > value){filteredNumbers.push(number);}});
+  
+  // Change code above this line
+  return filteredNumbers;
+}
+console.log(filterArray([1, 2, 3, 4, 5], 3));
+//
+//    Объявлена функция filterArray(numbers, value)
+//    Для перебора массива numbers использован метод forEach
+//    Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5]
+//    Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5]
+//    Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает []
+ //   Вызов функции filterArray([12, 24, 8, 41, 76], 38) возвращает [41, 76]
+//    Вызов функции filterArray([12, 24, 8, 41, 76], 20) возвращает [24, 41, 76]
+ //   Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+  //--------------------------------------------------------------------------------------------------------------------
+  //Функция getCommonElements(firstArray, secondArray) принимает два массива произвольной длины в параметры //firstArray и secondArray, и возвращает новый массив их общих элементов, то есть тех которые есть в обоих //массивах.
+
+//Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach.
+function getCommonElements(firstArray, secondArray) {
+  const commonElements = [];
+  // Change code below this line
+firstArray.forEach((firstA) => { secondArray.forEach((secondA) => { if (firstA === secondA) {commonElements.push(secondA)};});});
+
+   return commonElements;
+  // Change code above this line
+}
+console.log(getCommonElements([1, 2, 3], [2, 4]));
+//
+//    Объявлена функция getCommonElements(firstArray, secondArray)
+//    Для перебора параметра (массива) использован метод forEach
+//    Вызов getCommonElements([1, 2, 3], [2, 4]) возвращает [2]
+//    Вызов getCommonElements([1, 2, 3], [2, 1, 17, 19]) возвращает [1, 2]
+//    Вызов getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]) возвращает [12, 27, 3]
+//    Вызов getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]) возвращает [10, 30, 40]
+//    Вызов getCommonElements([1, 2, 3], [10, 20, 30]) возвращает []
+//    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+  
+  //----------------------------------------------------------------------------------------------------
+  // Change code below this line
+//Стрелочные функции имеют сокращённый, более лаконичный синтаксис, что уменьшает объем кода, особенно когда //функция маленькая или если она используется как коллбек.
+
+//Все стрелки создаются как функциональное выражение, и если функция не анонимна, то она должна быть присвоена //переменной.
+let calculateTotalPrice = (quantity, pricePerItem) => {
+  // Change code above this line
+  return quantity * pricePerItem;
+};
+console.log(calculateTotalPrice(5, 100)); 
+//
+ //  Объявлена переменная calculateTotalPrice
+ //   Переменной calculateTotalPrice присвоена стрелочная функция с параметрами (quantity, pricePerItem)
+ //   Вызов calculateTotalPrice(5, 100) возвращает 500
+  //  Вызов calculateTotalPrice(8, 60) возвращает 480
+  //  Вызов calculateTotalPrice(3, 400) возвращает 1200
+  //  Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+//--------------------------------------------------------------------------------------------------------
+  // Change code below this line
+const calculateTotalPrice = (quantity, pricePerItem) => quantity * pricePerItem;
+
+// Change code above this line
+  console.log(calculateTotalPrice(5, 100));
+  //----------------------------------------------------------------------------------------------------------
 }
