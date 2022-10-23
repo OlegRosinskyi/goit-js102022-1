@@ -1855,4 +1855,959 @@ console.log(changeEven([1, 2, 3, 4, 5], 10));
   //  Вызов changeEven([17, 24, 68, 31, 42], 100) возвращает новый массив [17, 124, 168, 31, 142]
   //  Вызов changeEven([44, 13, 81, 92, 36, 54], 100) возвращает новый массив [144, 13, 81, 192, 136, 154]
   //  Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+
+  //--------------------------------------------------------------------------------------------------
+  //Дополни код так, чтобы в переменной planetsLengths получился массив длин названий планет. Обязательно //используй метод map().
+const planets = ["Earth", "Mars", "Venus", "Jupiter"];
+// Change code below this line
+const planetsLengths = planets.map((planet) => {return planet.length;});
+console.log(planetsLengths);
+//
+//    Объявлена переменная planets
+//    Значение переменной planets это массив ["Earth", "Mars", "Venus", "Jupiter"]
+//    Объявлена переменная planetsLengths
+//    Значение переменной planetsLengths это массив [5, 4, 5, 7]
+//    Для перебора массива планет использован метод map()
+  
+  //----------------------------------------------------------------------------------------------
+  const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+// Change code below this line
+
+const titles = books.map(book => book.title);
+console.table(titles);
+//console.table(books);
+  //--------------------------------------------------------------------------------------------------------
+  //Используя метод flatMap() сделай так, чтобы в переменной genres получился массив всех жанров книг //(свойство genres) из массива книг books.
+const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["adventure", "history"],
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    genres: ["fiction"],
+  },
+  {
+    title: "Redder Than Blood",
+    author: "Tanith Lee",
+    genres: ["horror", "mysticism"],
+  },
+];
+// Change code below this line
+
+const genres = books.flatMap(book => book.genres);
+console.table(books);
+console.log(genres);
+//
+//    Объявлена переменная books
+//    Значение переменной books это массив объектов
+//    Объявлена переменная genres
+//    Значение переменной genres это массив [ "adventure", "history", "fiction", "horror", "mysticism" ]
+//    Для перебора массива books используется метод flatMap()
+  
+  //---------------------------------------------------------------------------------------------------------
+  const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    skills: ["ipsum", "lorem"],
+    gender: "male",
+    age: 37,
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
+    gender: "female",
+    age: 34,
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    skills: ["nulla", "anim", "proident", "ipsum", "elit"],
+    gender: "male",
+    age: 24,
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    skills: ["adipisicing", "irure", "velit"],
+    gender: "female",
+    age: 21,
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    skills: ["ex", "culpa", "nostrud"],
+    gender: "male",
+    age: 27,
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    skills: ["non", "amet", "ipsum"],
+    gender: "male",
+    age: 38,
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    skills: ["lorem", "veniam", "culpa"],
+    gender: "female",
+    age: 39,
+  },
+];
+// Change code below this line
+//const getUserNames = users.map(user =>  user.name); 
+//console.log(getUserNames);
+// Change code below this line
+const getUserNames = (users) => users.map(user => user.name);
+  // Change code above this line
+console.table(users);
+console.log(getUserNames);
+  // Change code above this line
+  //----------------------------------------------------------------------------------------------------
+  // Change code below this line
+const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    skills: ["ipsum", "lorem"],
+    gender: "male",
+    age: 37,
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
+    gender: "female",
+    age: 34,
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    skills: ["nulla", "anim", "proident", "ipsum", "elit"],
+    gender: "male",
+    age: 24,
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    skills: ["adipisicing", "irure", "velit"],
+    gender: "female",
+    age: 21,
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    skills: ["ex", "culpa", "nostrud"],
+    gender: "male",
+    age: 27,
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    skills: ["non", "amet", "ipsum"],
+    gender: "male",
+    age: 38,
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    skills: ["lorem", "veniam", "culpa"],
+    gender: "female",
+    age: 39,
+  },
+];
+const getUserEmails = (users) => users.map((user) => user.email 
+ );
+  // Change code above this line
+  console.table(users);
+console.log(getUserEmails(users));
+
+const getUserNames = (users) => users.map(user => user.name); 
+  // Change code above this line
+console.table(users);
+  console.log(getUserNames(users));
+ //-------------------------------------------------------------------------------------------------------------
+// Метод filter(callback) используется для единственной операции - фильтрации массива, то есть когда необходимо выбрать более одного элемента из коллекции по какому-то критерию. 
+ const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
+// Change code below this line
+
+const evenNumbers = numbers.filter(number => number % 2 === 0 );
+const oddNumbers = numbers.filter(number => number % 2 === 1);
+console.log(evenNumbers);
+  console.log(oddNumbers); 
+  //------------------------------------------------------------------------------------------------------
+
+  ////Дополни код так, чтобы в переменной allGenres был массив всех жанров книг (свойство genres) из массива books, а в переменной uniqueGenres массив уникальных жанров - без повторений.
+const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["adventure", "history"],
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    genres: ["fiction", "mysticism"],
+  },
+  {
+    title: "Redder Than Blood",
+    author: "Tanith Lee",
+    genres: ["horror", "mysticism", "adventure"],
+  },
+];
+// Change code below this line
+const allGenres = books.flatMap(book => book.genres);
+console.log(allGenres);
+const uniqueGenres = allGenres.filter((allGenre, index) =>  allGenres.indexOf(allGenre) === index ); 
+console.log(uniqueGenres);
+
+    //Объявлена переменная books
+    //Значение переменной books это массив объектов
+    //Объявлена переменная allGenres
+    //Значение переменной allGenres это массив ["adventure", "history", "fiction", "mysticism", "horror", "mysticism", "adventure"]
+    //Объявлена переменная uniqueGenres
+    //Значение переменной uniqueGenres это массив ["adventure", "history", "fiction", "mysticism", "horror"]
+   // Для вычисления значения переменной allGenders использован метод flatMap()
+   // Для вычисления значения переменной uniqueGenres использован метод filter()
+  
+  //-----------------------------------------------------------------------------------------------------
+  //Используя метод filter() дополни код так, чтобы:
+
+//    В переменной topRatedBooks получился массив книг рейтинг которых (свойство rating) больше либо равно //значению переменной MIN_RATING.
+//    В переменной booksByAuthor получился массив книг написанных автором с именем (свойство author) которое //совпадает со значением в переменной AUTHOR.
+
+const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+
+const MIN_RATING = 8;
+const AUTHOR = "Bernard Cornwell";
+// Change code below this line
+
+const topRatedBooks = books.filter(book => book.rating >= MIN_RATING);
+const booksByAuthor = books.filter(book => book.author === AUTHOR);
+//
+ //   Объявлена переменная books
+ //   Значение переменной books это массив объектов
+ //   Объявлена переменная MIN_RATING
+ //   Значение переменной MIN_RATING это число 8
+//   Объявлена переменная AUTHOR
+ //   Значение переменной AUTHOR это строка "Bernard Cornwell"
+ //   Объявлена переменная topRatedBooks
+ //   Значение переменной topRatedBooks это массив книг с рейтингов выше 8
+ //   Объявлена переменная booksByAuthor
+ //   Значение переменной booksByAuthor это массив книг автор которых "Bernard Cornwell"
+ //   Для перебора массива books использован метод filter()
+
+  //---------------------------------------------------------------------------------------------------------
+  //Дополни функцию getUsersWithEyeColor(users, color) так, чтобы она возвращала массив пользователей у //которых цвет глаз (свойство eyeColor) совпадает со значением параметра color.
+// Change code below this line
+const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male"
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female"
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male"
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female"
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male"
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male"
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female"
+  }
+]
+const getUsersWithEyeColor = (users, color) => {return users.filter(user => user.eyeColor === color);
+console.log(getUsersWithEyeColor(users, "blue")); 
+
+};
+//
+ //   Объявлена переменная getUsersWithEyeColor
+ //   Переменной getUsersWithEyeColor присвоена стрелочная функция с параметрами (users, color)
+ //   Для перебора параметра users используется метод filter()
+ //   Если значение параметра color это "blue", функция возвращает массив объектов пользователей с именами //Moore Hensley, Sharlene Bush и Carey Barr
+//    Если значение параметра color это "green", функция возвращает массив объектов пользователей с именами //Ross Vazquez и Elma Head
+//    Если значение параметра color это "brown", функция возвращает массив объектов пользователей с именами //Blackburn Dotson и Sheree Anthony
+//    Если значение параметра color это любая другая строка, функция возвращает пустой массив
+//    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+
+// Change code above this line
+  //--------------------------------------------------------------------------------------------------------------
+
+  //Дополни функцию getUsersWithAge(users, minAge, maxAge) так, чтобы она возвращала массив пользователей, //возраст которых (свойство age) попадает в промежуток от minAge до maxAge.
+const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male",
+    age: 37
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female",
+    age: 34
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male",
+    age: 24
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female",
+    age: 21
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male",
+    age: 27
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male",
+    age: 38
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female",
+    age: 39
+  }
+]
+// Change code below this line
+const getUsersWithAge = (users, minAge, maxAge) => { return users.filter(user => (user.age >= minAge && user.age <= maxAge))
+ 
+
+};
+// Change code above this line
+//
+ //   Объявлена переменная getUsersWithAge
+  //  Переменной getUsersWithAge присвоена стрелочная функция с параметрами (users, minAge, maxAge)
+ //   Для перебора параметра users используется метод filter()
+ //   Если значение параметров minAge и maxAge равны 20 и 30 соотвественно, функция возвращает массив //объектов пользователей с именами Ross Vazquez, Elma Head и Carey Barr
+//    Если значение параметров minAge и maxAge равны 30 и 40 соотвественно, функция возвращает массив //объектов пользователей с именами Moore Hensley, Sharlene Bush, Blackburn Dotson, Sheree Anthony
+//    Если значение параметров minAge и maxAge равны 80 и 100 соотвественно, функция возвращает пустой массив
+//    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+console.table(users);
+  console.table(getUsersWithAge(users, 18, 35));
+  
+  //-------------------------------------------------------------------------------------------------------
+  //Этот массив объектов мы будем передавать в параметр users при вызове функции из задания.
+//Дополни функцию getUsersWithFriend(users, friendName) так, чтобы она возвращала массив пользователей у //которых есть друг с именем в параметре friendName. Массив друзей пользователя хранится в свойстве friends.
+const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male",
+    age: 37
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female",
+    age: 34
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male",
+    age: 24
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female",
+    age: 21
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male",
+    age: 27
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male",
+    age: 38
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female",
+    age: 39
+  }
+]
+// Change code below this line
+const getUsersWithFriend = (users, friendName) => {return users.filter(user => user.friends.includes(friendName)); 
+};
+console.table(getUsersWithFriend(users, "Briana Decker"));
+// Change code above this line
+//
+ //   Объявлена переменная getUsersWithFriend
+ //   Переменной getUsersWithFriend присвоена стрелочная функция с параметрами (users, friendName)
+ //   Для перебора параметра users используется метод filter()
+ //   Если значение параметра friendName это строка "Briana Decker", функция возвращает массив объектов //пользователей с именами Sharlene Bush и Sheree Anthony
+//    Если значение параметра friendName это строка "Goldie Gentry", функция возвращает массив объектов //пользователей с именами Elma Head и Sheree Anthony
+//    Если значение параметра friendName это строка "Adrian Cross", функция возвращает пустой массив
+//    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+  
+  //--------------------------------------------------------------------------------------------------------------
+  //Дополни функцию getFriends(users) так, чтобы она возвращала массив друзей всех пользователей (свойство //friends). У нескольких пользователей могут быть одинаковые друзья, сделай так чтобы возвращаемый массив не //содержал повторений.
+const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male",
+    age: 37
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female",
+    age: 34
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male",
+    age: 24
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female",
+    age: 21
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male",
+    age: 27
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male",
+    age: 38
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female",
+    age: 39
+  }
+]
+// Change code below this line
+const getFriends = (users) => {
+  return users.flatMap(user => user.friends).filter((friend, index) => users.flatMap(user => user.friends).indexOf(friend) === index);
+  //return cars.filter((car) => car.onSale).flatMap(user => user.friends;
+ 
+};
+//getFriends =  getFriends.filter((getFriend, index) => getFriends.indexOf(getFriend) === index )
+console.table(users);
+console.log(getFriends(users));
+//{ user.friends.filter((friend, index) => user.friends.indexOf(friend) === index) }
+//
+//    Объявлена переменная getFriends
+//    Переменной getFriends присвоена стрелочная функция с параметром (users)
+//    Вызов функции с указанным массивом пользователей возвращает массив ["Sharron Pace", "Briana Decker", //"Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner", "Goldie Gentry", "Aisha Tran", "Jordan Sampson", //"Eddie Strong", "Jacklyn Lucas", "Linda Chapman"]
+//    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+  //-------------------------------------------------------------------------------------------------------
+  const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male",
+    age: 37
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female",
+    age: 34
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male",
+    age: 24
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female",
+    age: 21
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male",
+    age: 27
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male",
+    age: 38
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female",
+    age: 39
+  },
+];
+// Change code below this line
+//const getActiveUsers = (users) => users.filter((user) => user.isActive);  
+const getActiveUsers = (users) => { return users.filter((user) => user.isActive) };
+// const getCarsWithDiscount = (cars) => cars.filter((car) => car.onSale);   ;
+console.table(getActiveUsers(users));
+// Change code above this line
+  //---------------------------------------------------------------------------------------------------------
+  //Дополни функцию getInactiveUsers(users) так, чтобы она возвращала массив неактивных пользователей, значение свойства isActive которых false.
+  const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male",
+    age: 37
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female",
+    age: 34
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male",
+    age: 24
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female",
+    age: 21
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male",
+    age: 27
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male",
+    age: 38
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female",
+    age: 39
+  },
+];
+// Change code below this line
+const getInactiveUsers = (users) => { return users.filter((user) => !user.isActive) };
+console.table(getInactiveUsers(users));
+// Change code above this line
+  //-----------------------------------------------------------------------------------------------------
+  //Используя метод find() дополни код так, чтобы:
+
+//    В переменной bookWithTitle получился объект книги название которой (свойство title) совпадает со //значением переменной BOOK_TITLE.
+//    В переменной bookByAuthor получился объект книги автор который (свойство author) совпадает со //значением переменной AUTHOR.
+
+const books = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    rating: 8.38,
+  },
+  {
+    title: 'Beside Still Waters',
+    author: 'Robert Sheckley',
+    rating: 8.51,
+  },
+  {
+    title: 'The Dream of a Ridiculous Man',
+    author: 'Fyodor Dostoevsky',
+    rating: 7.75,
+  },
+  { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+  
+];
+const BOOK_TITLE = "The Dream of a Ridiculous Man";
+const AUTHOR = "Robert Sheckley";
+const bookWithTitle =  books.find(book => book.title === BOOK_TITLE);
+const bookByAuthor =  books.find(book => book.author === AUTHOR);
+console.log(bookWithTitle);
+console.log(bookByAuthor);
+
+  
+  //-------------------------------------------------------------------------------------------------------
+  //Дополни функцию getUserWithEmail(users, email) так, чтобы она возвращала объект пользователя, почта //которого (свойство email) совпадает со значением параметра email.
+const users =[
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male"
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female"
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male"
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female"
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male"
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male"
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female"
+  }
+]
+// Change code below this line
+const getUserWithEmail = (users, email) => {return users.find(user => user.email === email);
+   
+};
+// Change code above this line
+
 }
