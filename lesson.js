@@ -3869,4 +3869,600 @@ const getTotalBalanceByGender = (users, gender) => {
  //   Если значение параметра gender это строка "male", функция возвращает число 12053
  //   Если значение параметра gender это строка "female", функция возвращает число 8863
  //   Вызов функции со случайными, но валидными аргументами, возвращает правильное значение
+  
+  //---------------------------------------------------------------------------------------------------------
+  //Тестировщики нашли баги в коде сервиса хранения истории заказов еды. Тебе необходимо исправить их, правильно расставив this в методах объекта historyService, чтобы методы начали работать правильно.
+const historyService = {
+  orders: [
+    { email: "jacob@hotmail.com", dish: "Burrito" },
+    { email: "solomon@topmail.net", dish: "Burger" },
+    { email: "artemis@coldmail.net", dish: "Pizza" },
+    { email: "solomon@topmail.net", dish: "Apple pie" },
+    { email: "jacob@hotmail.com", dish: "Taco" },
+  ],
+  // Change code below this line
+  getOrdersLog() {
+    
+    return this.orders
+      .map(order => `email: ${order.email} dish: ${order.dish}`)
+      .join(" - ");
+ },
+  getEmails() {
+    const emails = this.orders.map(order => order.email);
+    const uniqueEmails = new Set(emails);
+    return [...uniqueEmails];
+ },
+  getOrdersByEmail(email) {
+    return this.orders.filter(order => order.email === email);
+  },
+ //  Change code above this line
+  
+};
+console.log(historyService);
+console.log(historyService.getOrdersLog());
+console.log(historyService.getEmails());
+console.log(historyService.getOrdersByEmail("solomon@topmail.net"));
+//
+//    Объявлена переменная historyService
+//    Значение переменной historyService это объект с исходными свойствами и методами
+//    Вызов historyService.getOrdersLog() возвращает строку с перечислением данных всех заказов из свойства orders
+//    Вызов historyService.getEmails() возвращает массив всех уникальных почтовых адресов из свойства orders
+//    Вызов historyService.getOrdersByEmail("solomon@topmail.net") возвращает [{ email: "solomon@topmail.net", dish: "Burger" }, { email: "solomon@topmail.net", dish: "Apple pie" }]
+//    Вызов historyService.getOrdersByEmail("artemis@coldmail.net") возвращает [{ email: "artemis@coldmail.net", dish: "Pizza" }]
+//    Метод getOrdersLog объекта historyService использует this
+//    Метод getEmails объекта historyService использует this
+//    Метод getOrdersByEmail объекта historyService использует this
+  
+  //---------------------------------------------------------------------------------------------------------
+  //Объекты можно организовать в цепочки так, чтобы свойство не найденное в одном объекте, автоматически искалось //бы в другом. Связующим звеном выступает специальное скрытое свойство [[Prototype]], которое в консоли //Метод //Object.create(obj) создаёт и возвращает новый объект, связывая его с объектом obj. Объект, на который //указывает ссылка в __proto__, называется прототипом. В нашем примере объект animal это прототип для объекта //dog. Метод isPrototypeOf() проверяет является ли объект animal прототипом для dog и возвращает true или //false.браузера отображается как __proto__.
+//
+//Измени код так, чтобы объект parent стал прототипом для объекта в переменной сhild.
+const parent = {
+  name: "Stacey",
+  surname: "Moore",
+  age: 54,
+  heritage: "Irish",
+};
+// Change code below this line
+
+const child = Object.create(parent);
+
+// Change code above this line
+child.name = "Jason";
+child.age = 27;
+
+   // Объявлена переменная parent
+  //  Значение переменной parent это объект
+  //  Вызов parent.hasOwnProperty("surname") возвращает true
+  //  Вызов parent.hasOwnProperty("heritage") возвращает true
+  //  Объявлена переменная child
+  //  Значение переменной child это объект
+ //   Вызов child.hasOwnProperty("name") возвращает true
+ //   Обращение к child.name возвращает "Jason"
+ //   Вызов child.hasOwnProperty("age") возвращает true
+  //  Обращение к child.age возвращает 27
+  //  Вызов child.hasOwnProperty("surname") возвращает false
+  //  Обращение к child.surname возвращает "Moore"
+  //  Вызов child.hasOwnProperty("heritage") возвращает false
+  //  Обращение к child.heritage возвращает "Irish"
+  //  Вызов parent.isPrototypeOf(child) возвращает true
+  //  Используется метод Object.create()
+
+  //---------------------------------------------------------------------------------------------------------
+  //Измени код, построив цепочку прототипов так, чтобы объект ancestor был прототипом для parent, а тот в свою очередь был прототипом для child.
+const ancestor = {
+  name: "Paul",
+  age: 83,
+  surname: "Dawson",
+  heritage: "Irish",
+};
+// Change code below this line
+
+const parent = Object.create(ancestor);
+parent.name = "Stacey";
+parent.surname = "Moore";
+parent.age = 54;
+
+const child = Object.create(parent);
+child.name = "Jason";
+child.age = 27;
+
+// Change code above this line
+
+console.log(ancestor);
+console.log(ancestor.surname);
+console.log(child.surname);
+
+//------------------------------------------------------------------------------------------------------
+//
+//    Объявлена переменная ancestor
+//    Значение переменной ancestor это объект.
+//    Объявлена переменная parent
+//    Значение переменной parent это объект.
+//    Объявлена переменная child
+//    Значение переменной child это объект.
+//    Вызов ancestor.isPrototypeOf("parent") возвращает true
+//    Вызов parent.isPrototypeOf("child") возвращает true
+//    Вызов ancestor.hasOwnProperty("surname") возвращает true
+//    Обращение к ancestor.surname возвращает "Dawson"
+ //   Вызов parent.hasOwnProperty("surname") возвращает true
+//    Обращение к parent.surname возвращает "Moore"
+ //   Вызов child.hasOwnProperty("surname") возвращает false
+//    Обращение к child.surname возвращает "Moore"
+//    Вызов ancestor.hasOwnProperty("heritage") возвращает true
+//    Обращение к ancestor.heritage возвращает "Irish"
+//    Вызов parent.hasOwnProperty("heritage") возвращает false
+//    Обращение к parent.heritage возвращает "Irish"
+//    Вызов child.hasOwnProperty("heritage") возвращает false
+//    Обращение к child.heritage возвращает "Irish"
+ //   Используется метод Object.create()
+  
+  //-------------------------------------------------------------------------------------------------
+  //Синтаксис литерала объекта позволяет создать один объект. Но часто нужно создать много однотипных объектов //с одинаковым набором свойств, но разными значениями и методами для взаимодействия с ними. Всё это нужно //сделать динамически, во время выполнения программы. Для этого используют классы - специальный синтаксис //объявления функции для создания объектов.
+
+//Объявление класса начинается с ключевого слова class, после которого идёт имя класса и фигурные скобки - //его тело. Классы принято называть с большой буквы, а в самом названии отражать тип создаваемого объекта //(существительное).
+
+//class User {
+  // Тело класса
+//}
+
+//const mango = new User();
+//console.log(mango); // {}
+
+//const poly = new User();
+//console.log(poly); // {}
+
+//Результат вызова new User() это объект, который называется экземпляр класса, потому что содержит данные и //поведение, описываемые классом.
+
+//Используя ключевое слово class объяви класс Car с пустым телом.
+//class Car {}
+
+//
+ //   Объявлен класс Car
+ //   Результат вызова new Car() это пустой объект
+  
+  //--------------------------------------------------------------------------------------------------------
+  class Car {
+  // Change code below this line
+
+    brand;
+    model;
+    price;
+  constructor(brand, model, price) {
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+  // Change code above this line
+}
+console.log(new Car("Audi", "Q3", 36000));
+console.log(new Car("BMW", "X5", 58900));
+  console.log(new Car("Nissan", "Murano", 31700));
+  //-----------------------------------------------------------------------------------------------
+
+  //-----------------------------------------------------------------------------------------------------
+  //Класс может принимать большое количество входных данных для свойств будущего объекта. Если параметров много //(больше 2-х), то обычно применяют паттерн «Объект параметров». Идея этого паттерна в том, чтобы передавать в //качестве параметра один объект с логично именованными свойствами. Значения свойств такого объекта заменят //набор аргументов.
+
+//class User {
+  // Деструктуризируем объект
+ // constructor({ name, email }) {
+ //   this.name = name;
+ //   this.email = email;
+ // }
+//}
+
+//const mango = new User({
+ // name: "Mango",
+//  email: "mango@mail.com",
+//});
+//console.log(mango); // { name: "Mango", email: "mango@mail.com" }
+
+//const poly = new User({
+//  name: "Poly",
+//  email: "poly@mail.com",
+//});
+//console.log(poly); // { name: "Poly", email: "poly@mail.com" }
+
+class Car {
+  // Change code below this line
+  constructor({brand, model, price}) {
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+  // Change code above this line
+}
+console.log(new Car({ brand: "Audi", model: "Q3", price: 36000 }));
+
+//Выполни рефакторинг класса Car так, чтобы он принимал один параметр - объект со свойсвами brand, model и price. Деструктуризируй объект в сигнатуре (подписи) конструктора.
+
+//    Объявлен класс Car
+//    У класса Car есть метод constructor
+//    В результате вызова new Car({ brand: "Audi", model: "Q3", price: 36000 }) получится объект { brand: //"Audi", model: "Q3", price: 36000 }
+//    В результате вызова new Car({ brand: "BMW", model: "X5", price: 58900 }) получится объект { brand: //"BMW", model: "X5", price: 58900 }
+//    В результате вызова new Car({ brand: "Nissan", model: "Murano", price: 31700 }) получится объект { //brand: "Nissan", model: "Murano", price: 31700 }
+
+//----------------------------------------------------------------------------------------------------------------
+  class Car {
+  price = 2000;
+  constructor({ brand, model, price }) {
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+  // Change code below this line
+getPrice(){
+  return this.price;
+}
+changePrice(newPrice)
+  {this.price = newPrice};
+
+  // Change code above this line
+ 
+};
+const car = new Car({});
+// console.log(Car);
+console.log(car.changePrice(2000));
+  console.log(car);
+  
+  //-------------------------------------------------------------------------------------------------------
+  //Напиши класс Storage, который будет создавать объекты для управления складом товаров. Класс ожидает только //один аргумент - начальный массив товаров, который записывается на создаваемый объект в свойство items.
+
+//Объяви следующие методы класса:
+
+//    getItems() - возвращает массив текущих товаров в свойстве items объекта который вызывает этот метод.
+//    addItem(newItem) - принимает новый товар newItem и добавляет его в массив товаров в свойстве items //объекта который вызывает этот метод.
+//    removeItem(itemToRemove) - принимает товар itemToRemove и удаляет его из массива товаров в свойстве //items объекта который вызывает этот метод.
+
+//Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой //твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+class Storage  {
+items = [];
+constructor(items)
+  {
+    this.items = items;
+  }
+
+ getItems() {
+   return this.items;
+  }
+  
+addItem(newItem){
+  return this.items.push(newItem);
+  }
+  
+removeItem(itemToRemove){
+  if (this.items.includes(itemToRemove))
+    return this.items.splice(this.items.indexOf(itemToRemove), 1);
+   return ;
+  //this.items.filter(item => item === itemToRemove);
+  };
+  
+};
+
+//console.log(Storage);
+// Change code above this line
+
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem("Droid");
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+//console.log(Storage);
+//
+//    Объявлен класс Storage
+//    В классе Storage объявлен метод getItems
+//    В классе Storage объявлен метод addItem
+//    В классе Storage объявлен метод removeItem
+//    Метод getItems возвращает значение свойства items экземпляра класса который его вызывает
+//    Метод addItem изменяет свойство items экземпляра класса который его вызывает
+//    Метод removeItem изменяет свойство items экземпляра класса который его вызывает
+//    В результате вызова new Storage(["Nanitoids", "Prolonger", "Antigravitator"]) значение переменной //storage это объект
+//    У объекта storage есть свойство items
+//    Первый вызов storage.getItems(), сразу после инциализации экземпляра, возвращает массив ["Nanitoids", //"Prolonger", "Antigravitator"]
+//    Второй вызов, storage.getItems(), после вызова storage.addItem("Droid"), возвращает массив //["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+//    Третий вызов storage.getItems(), после вызова storage.removeItem("Prolonger"), возвращает массив //["Nanitoids", "Antigravitator", "Droid"]
+
+  class StringBuilder{
+ initialValue = "";
+  constructor(initialValue){
+    this.value = initialValue;
+  }
+getValue()   {    return this.value;  }
+  padEnd(str){   this.value = this.value + str; }
+  padStart(str){    this.value = str + this.value;   }
+  padBoth(str){    this.value = str + this.value + str;  }
+}
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); 
+builder.padStart("^");
+console.log(builder.getValue()); 
+builder.padEnd("^");
+console.log(builder.getValue()); 
+console.log(builder.getValue()); 
+
+//
+//    Объявлен класс StringBuilder
+ //   В классе StringBuilder объявлен метод getValue
+ //   Метод getValue возвращает значение свойства value экземпляра класса который его вызывает
+ //   В классе StringBuilder объявлен метод padEnd
+ //   Метод padEnd изменяет свойство value экземпляра класса, который его вызывает
+ //   В классе StringBuilder объявлен метод padStart
+ //   Метод padStart изменяет свойство value экземпляра класса который его вызывает
+ //   В классе StringBuilder объявлен метод padBoth
+ //   Метод padBoth изменяет свойство value экземпляра класса который его вызывает
+ //   В результате вызова new StringBuilder(".") значение переменной builder это объект
+  //  У объекта builder есть свойство value
+  //  Первый вызов builder.getValue(), сразу после инциализации экземпляра, возвращает строку .
+  //  Второй вызов builder.getValue(), после вызова builder.padStart("^"), возвращает строку ^.
+ //   Третий вызов builder.getValue(), после вызова builder.padEnd("^"), возвращает строку ^.^
+  //  Четвёртый вызов builder.getValue(), после вызова builder.padBoth("="), возвращает строку =^.^=
+  //---------------------------------------------------------------------------------------------------------
+  class StringBuilder{
+ initialValue = "";
+  constructor(initialValue){
+    this.value = initialValue;
+  }
+getValue()   {    return  this.value;  }
+  padEnd(str){  return this.value = this.value + str; }
+  padStart(str){  return  this.value = str + this.value;   }
+  padBoth(str){  return  this.value = str + this.value + str;  }
+}
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); 
+builder.padStart("^");
+console.log(builder.getValue()); 
+builder.padEnd("^");
+console.log(builder.getValue()); 
+  console.log(builder.getValue()); 
+  
+  //---------------------------------------------------------------------------------------------------------
+
+//Инкапсуляция - это концепция, предписывающая скрывать то, как устроен класс. Пользователь класса должен //получать доступ только к публичному интерфейсу - набору публичных свойств и методов класса. Остальные //методы и свойства (не публичные) должны быть не доступны.
+
+//В классах инкапсуляция реализуется приватными свойствами, доступ к которым можно получить только внутри //класса.
+
+//Допустим, почта пользователя должна быть недоступна для прямого изменения из вне, то есть приватна. //Добавляя к имени свойства символ # мы делаем его приватным. Объявление приватного свойства до инциализации //в конструкторе - обязательно.
+class Car {
+  // Change code below this line
+#brand;
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+getBrand(){
+  //get email() {
+    return this.#brand;
+ 
+}
+ changeBrand(newBrand) {
+   return this.#brand = newBrand;
+ }
+  
+  // Change code above this line
+}
+//Выполни рефакторинг класса Car так, чтобы свойство brand было приватным и добавь два метода для публичного //интерфейса, для чтения и изменения этого свойства.
+
+ //   getBrand() - возвращает значение приватного свойства brand.
+ //   changeBrand(newBrand) - изменяет значение приватного свойства brand на newBrand.
+
+ //   Объявлен класс Car
+ //   Свойство brand в классе Car объявлено приватным
+ //   Конструктор класса принимает объект со свойствами brand, model и price
+ //   В результате вызова new Car({ brand: "Audi", model: "Q3", price: 36000 }) получится объект { model: //"Q3", price: 36000 }
+//    В результате вызова new Car({ brand: "bmw", model: "X5", price: 58900 }) получится объект { model: //"X5", price: 58900 }
+//    В результате вызова new Car({ brand: "Nissan", model: "Murano", price: 31700 }) получится объект { //model: "Murano", price: 31700 }
+//    У экземпляра нет публичного свойства brand
+//    Метод getBrand() возвращает значение приватного свойства brand.
+//    Метод changeBrand("Honda") изменяет значение приватного свойства brand на "Honda"
+ //----------------------------------------------------------------------------------------------------------------- 
+//Выполни рефакторинг класса Storage, сделав свойство items приватным.
+
+//Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой //твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+class Storage {
+  // Change code below this line
+#items;
+  constructor(items) {
+    this.#items = items;
+  }
+
+  getItems() {
+    return this.#items;
+  }
+
+  addItem(newItem) {
+    this.#items.push(newItem);
+  }
+
+  removeItem(itemToRemove) {
+    //this.items = this.#items.filter(item => item !== itemToRemove);
+    if (this.#items.includes(itemToRemove))
+    return this.#items.splice(this.#items.indexOf(itemToRemove), 1);
+   return ;
+  }
+}
+
+// Change code above this line
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem("Droid");
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Droid"]
+
+//
+///    Объявлен класс Storage
+//    У объекта storage нет свойства items
+ //   В классе Storage объявлен метод getItems
+//    В классе Storage объявлен метод addItem
+ //   В классе Storage объявлен метод removeItem
+//    Свойство items в классе Storage объявлено приватным
+//    Конструктор класса принимает свойство items
+//    В результате вызова new Storage(["Nanitoids", "Prolonger", "Antigravitator"]) значение переменной //storage это объект
+//    Первый вызов storage.getItems(), сразу после инциализации экземпляра, возвращает массив ["Nanitoids", //"Prolonger", "Antigravitator"]
+ //   Второй вызов, storage.getItems(), после вызова storage.addItem("Droid"), возвращает массив //["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+//    Третий вызов storage.getItems(), после вызова storage.removeItem("Prolonger"), возвращает массив //["Nanitoids", "Antigravitator", "Droid"]
+
+//-------------------------------------------------------------------------------------------------------------
+  //Выполни рефакторинг класса StringBuilder, сделав свойство value приватным.
+
+//Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+  class StringBuilder {
+  // Change code below this line
+#value
+  constructor(initialValue) {
+    this.#value = initialValue;
+  }
+
+  getValue() {
+    return this.#value;
+  }
+
+  padEnd(str) {
+    this.#value += str;
+  }
+
+  padStart(str) {
+    this.#value = str + this.#value;
+  }
+
+  padBoth(str) {
+    this.#value = this.#value.padStart(this.#value.length + 1, str);
+    this.#value = this.#value.padEnd(this.#value.length + 1, str);
+  }
+}
+
+// Change code above this line
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // "."
+builder.padStart("^");
+console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+  console.log(builder.getValue()); // "=^.^="
+ //
+
+    //Объявлен класс StringBuilder
+
+   // Свойство value в классе StringBuilder объявлено приватным
+
+   // В классе StringBuilder объявлен метод getValue
+
+   // В классе StringBuilder объявлен метод padEnd
+
+   // В классе StringBuilder объявлен метод padStart
+
+   // В классе StringBuilder объявлен метод padBoth
+
+   /// В результате вызова new StringBuilder('.') значение переменной builder это объект
+
+   // У объекта builder нет свойства value
+
+   // Первый вызов builder.getValue(), сразу после инциализации экземпляра, возвращает строку .
+
+   // Второй вызов builder.getValue(), после вызова builder.padStart("^"), возвращает строку ^.
+
+   // Третий вызов builder.getValue(), после вызова builder.padEnd("^"), возвращает строку ^.^
+
+   // Четвёртый вызов builder.getValue(), после вызова builder.padBoth("="), возвращает строку =^.^=
+ 
+//-------------------------------------------------------------------------------------------------------------
+  
+  //Геттеры и сеттеры - это более краткий синтаксис объявления методов для взаимодействия со свойствами. //Геттер и сеттер имитируют обычное публичное свойство класса, но позволяют изменять другие свойства более //удобным способом. Геттер выполняется при попытке получить значение свойства, а сеттер - при попытке его //изменить.
+
+//Геттеры и сеттеры хорошо использовать для простых операций чтения и изменения значения свойств, особенно //приватных, как их публичный интерфейс. Для работы со свойством которое хранит массив или объект они не //подойдут.
+class Car {
+  // Change code below this line
+  #brand;
+  #model;
+  #price;
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.#model = model;
+    this.#price = price;
+  }
+
+  get brand() {
+    return this.#brand;
+  }
+
+  set brand(newBrand) {
+    this.#brand = newBrand;
+  }
+
+  get model() {
+    return this.#model;
+  }
+
+  set model(newModel) {
+    this.model = newModel;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    this.#price = newPrice;
+  }
+  // Change code above this line
+}
+//Выполни рефакторинг класса Car. Сделай свойства model и price приватными, также как #brand. Стандартизируй //публичный интерфейс класса заменив уже объявленные методы на геттеры и сеттеры brand, model и price для //взаимодействия с приватными свойствами.
+
+ //   Объявлен класс Car
+ //   В классе Car объявлено приватное свойство brand
+ //   В классе Car объявлено приватное свойство model
+ //   В классе Car объявлено приватное свойство price
+ //   Конструктор класса принимает объект со свойствами brand, model и price
+ //   В классе Car объявлен геттер brand
+ //   В классе Car объявлен сеттер brand
+ //   В классе Car объявлен геттер model
+ //   В классе Car объявлен сеттер model
+ //   В классе Car объявлен геттер price
+ //   В классе Car объявлен сеттер price
+  //----------------------------------------------------------------------------------------------------
+  //Выполни рефакторинг класса Car. Добавь публичное статическое свойство MAX_PRICE со значением 50000 - //максимально допустимая цена автомобиля.
+
+//Добавь сеттеру price проверку передаваемого значения параметра newPrice. Если оно больше чем MAX_PRICE, //сеттер ничего не делает, а если меньше или равно, то перезаписывает цену автомобиля.
+class Car {
+  // Change code below this line
+  static MAX_PRICE = 50000;
+  #price;
+
+  constructor({ price }) {
+    this.#price = price;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    if (Car.MAX_PRICE > newPrice)
+    this.#price = newPrice;
+    return ;
+  }
+  // Change code above this line
+}
+
+const audi = new Car({ price: 35000 });
+console.log(audi.price); // 35000
+
+audi.price = 49000;
+console.log(audi.price); // 49000
+
+audi.price = 51000;
+console.log(audi.price); // 49000
+//
+//    Объявлен класс Car
+//    У класса Car есть статическое свойство MAX_PRICE
+//    Значение статического свойства MAX_PRICE это число 50000
+//    У экземпляра нет свойства MAX_PRICE
+//    В классе Car объявлен геттер price
+//    В классе Car объявлен сеттер price
+//    Вызов сеттера price у экземпляра класса, со значением аргумента меньше чем значение MAX_PRICE, //изменяет свойство #price
+//    Вызов сеттера price у экземпляра класса, со значением аргумента больше чем значение MAX_PRICE, не //изменяет свойство #price
 }
