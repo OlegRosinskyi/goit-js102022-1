@@ -725,8 +725,7 @@ function isAdult(age) {
     //В цикле for не должен использоваться break для выхода до завершения всех итераций цикла
     //return number;
     // Change code above this line
-  }
-  --=======================================================================================================================
+  //-------------------------------------------------------------------------------------
     //Напиши функцию includes(array, value), которая делает тоже самое, что и метод массива //массив.includes(значение) - проверяет, есть ли в массиве array значение value, возвращая true если есть //и false в противном случае.
     function includes(array, value) {
       // Change code below this line
@@ -4465,4 +4464,318 @@ console.log(audi.price); // 49000
 //    В классе Car объявлен сеттер price
 //    Вызов сеттера price у экземпляра класса, со значением аргумента меньше чем значение MAX_PRICE, //изменяет свойство #price
 //    Вызов сеттера price у экземпляра класса, со значением аргумента больше чем значение MAX_PRICE, не //изменяет свойство #price
+//--------------------------------------------------------------------------------------------------------------
+  
+  //В классе можно объявить не только методы будущего экземпляра, но и методы доступные только классу - //статические методы, которые могут быть как публичные так и приватные. Синтаксис объявления аналогичен //статическим свойствам, за исключением того что значением будет метод.
+//class User {
+//  static #takenEmails = [];
+
+//  static isEmailTaken(email) {
+//    return User.#takenEmails.includes(email);
+//  }
+
+//  #email;
+
+ // constructor({ email }) {
+ //   this.#email = email;
+ //   User.#takenEmails.push(email);
+ // }
+//}
+
+//const mango = new User({ email: "mango@mail.com" });
+
+//console.log(User.isEmailTaken("poly@mail.com"));
+//console.log(User.isEmailTaken("mango@mail.com"));
+//Особенность статических методов в том, что во время их вызова ключевое слово this ссылается на сам класс. //Это значит что статический метод может получить доступ к статическим свойствам класса, но не к свойствам //экземпляра. Логично, потому что статические методы вызывает сам класс, а не его экземпляры.
+
+//Добавь классу Car публичный статический метод checkPrice(price), принимающий цену автомобиля. Метод должен //сравнить значения параметра price и приватного статического свойства MAX_PRICE.
+
+//    Если цена автомобиля превышает максимальную, метод должен вернуть строку "Error! Price exceeds the //maximum".
+//    В противном случае метод должен вернуть строку "Success! Price is within acceptable limits".
+
+//Под объявлением класса мы добавили инициализацию экземпляра и вызовы методов, чтобы показать как будет //использоваться метод checkPrice(price).
+//================================================================================================
+class Car {
+  static #MAX_PRICE = 50000;
+  // Change code below this line
+static checkPrice(price){
+  //if (price > Car.#MAX_PRICE) return "Error! Price exceeds the maximum";
+  if (price > this.#MAX_PRICE) return "Error! Price exceeds the maximum";
+  else return "Success! Price is within acceptable limits";
+}
+  // Change code above this line
+  constructor({ price }) {
+    this.price = price;
+  }
+}
+
+const audi = new Car({ price: 36000 });
+const bmw = new Car({ price: 64000 });
+
+console.log(Car.checkPrice(audi.price)); // "Success! Price is within acceptable limits"
+console.log(Car.checkPrice(bmw.price)); // "Error! Price exceeds the maximum"
+//
+//    Объявлен класс Car
+//    У класса Car есть статический метод checkPrice(price)
+//    Вызов Car.checkPrice(36000) возвращает строку "Success! Price is within acceptable limits"
+//    Вызов Car.checkPrice(18000) возвращает строку "Success! Price is within acceptable limits"
+//    Вызов Car.checkPrice(64000) возвращает строку "Error! Price exceeds the maximum"
+//    Вызов Car.checkPrice(57000) возвращает строку "Error! Price exceeds the maximum"
+  
+  //-----------------------------------------------------------------------------------------------------------------
+  //Ключевое слово extends позволяет реализовать наследование классов, когда один класс (дочерний, //производный) наследует свойства и методы другого класса (родителя).
+
+//В приложении нужен администратор с возможностью добавлять почты пользователей в чёрный список.
+
+ //   Объяви класс Admin, который наследует от класса User
+ //   Добавь классу Admin публичное статическое свойство AccessLevel (уровень доступа), значение которого //это объект { BASIC: "basic", SUPERUSER: "superuser" }
+//В приложении нужен администратор с возможностью добавлять почты пользователей в чёрный список.
+
+//   Объяви класс Admin, который наследует от класса User
+//    Добавь классу Admin публичное статическое свойство AccessLevel (уровень доступа), значение которого //это объект { BASIC: "basic", SUPERUSER: "superuser" }
+
+class User {
+  constructor(email) {
+    this.email = email;
+  }
+  get email() {
+    return this.email;
+  }
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+class Admin extends User { 
+ static AccessLevel = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+  }
+console.log(Admin.AccessLevel.BASIC);
+console.log(Admin.AccessLevel.SUPERUSER);
+
+//
+//    Объявлен класс Admin
+//    Класс Admin наследует от класса User
+//    У класса Admin есть публичное статическое свойство AccessLevel
+//    Обращение к Admin.AccessLevel.BASIC возвращает строку "basic"
+//    Обращение к Admin.AccessLevel.SUPERUSER возвращает строку "superuser"
+
+// Change code below this line
+ //------------------------------------------------------------------------------------------------------------
+ 
+  
+//Первым делом в конструкторе дочернего класса необходимо вызвать специальную функцию super(аргументы) - это //псевдоним конструктора родительского класса. В противном случае, при попытке обратиться к this в //конструкторе дочернего класса, будет ошибка. При вызове конструктора класса родителя передаём необходимые //ему аргументы для инициализации свойств.
+//class User {
+ // constructor(email) {
+ //   this.email = email;
+ // }
+
+ // get email() {
+ //   return this.email;
+ // }
+
+ // set email(newEmail) {
+ //   this.email = newEmail;
+ // }
+//}
+
+//class ContentEditor extends User {
+//  constructor({ email, posts }) {
+//    // Вызов конструктора родительского класса User
+//    super(email);
+//    this.posts = posts;
+ // }
+//}
+
+//const editor = new ContentEditor({ email: "mango@mail.com", posts: [] });
+//console.log(editor); // { email: 'mango@mail.com', posts: [] }
+//console.log(editor.email); // 'mango@mail.com'
+//Добавь классу Admin метод constructor, который принимает один параметр - объект настроек с двумя //свойствами email и accessLevel. Добавь классу Admin публичное свойство accessLevel, значение которого //будет передаваться при вызове конструктора.
+
+//Чтобы показать как будет использоваться класс Admin мы добавили инициализацию экземпляра под объявлением //класса.
+
+class User {
+  email;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+class Admin extends User {
+  // Change code below this line
+
+  static AccessLevel = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+    constructor ({ email, accessLevel }) {
+      super(email);
+      this.accessLevel = accessLevel;
+    
+  };
+
+  // Change code above this line
+}
+
+const mango = new Admin({
+  email: "mango@mail.com",
+  accessLevel: Admin.AccessLevel.SUPERUSER,
+});
+
+console.log(mango.email); // "mango@mail.com"
+console.log(mango.accessLevel); // "superuser"
+//
+//    Объявлен класс Admin
+//    Класс Admin наследует от класса User
+//    У класса Admin есть публичное статическое свойство AccessLevel
+//    У класса Admin есть метод constructor с параметром в виде объекта {email, accessLevel}
+//    У класса Admin в конструкторе для свойства email используется обращение к конструктору родительского //класса
+//    Обращение к Admin.AccessLevel.BASIC возвращает строку "basic"
+//    Обращение к Admin.AccessLevel.SUPERUSER возвращает строку "superuser"
+  
+  class User {
+  email;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+class Admin extends User {
+  // Change code below this line
+
+  static AccessLevel = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+  blacklistedEmails = [];
+  constructor({ email, accessLevel, blacklistedEmails }) {
+    super(email);
+    this.accessLevel = accessLevel;
+    this.blacklistedEmails =  blacklistedEmails;
+  }
+   blacklist(aemail) {
+   this.blacklistedEmails.push(aemail);
+}
+isBlacklisted(bemail) {
+  if (this.blacklistedEmails.find(blacklistedEmail => blacklistedEmail === bemail))
+    return true;
+  else return false;
+  }
+  // Change code above this line
+}
+
+const mango = new Admin({
+  email: "mango@mail.com",
+  accessLevel: Admin.AccessLevel.SUPERUSER,
+ blacklistedEmails: [],
+});
+
+console.log(mango.email); // "mango@mail.com"
+console.log(mango.accessLevel); // "superuser"
+
+mango.blacklist("poly@mail.com");
+console.log(mango.blacklistedEmails); // ["poly@mail.com"]
+console.log(mango.isBlacklisted("mango@mail.com")); // false
+console.log(mango.isBlacklisted("poly@mail.com")); // true
+
+ //--------------------------------------------------------------------------------------------------------
+ //В дочернем классе можно объявлять методы, которые будут доступны только его экземплярам.
+
+// Представим что выше есть объявление класса User
+
+//class ContentEditor extends User {
+//  constructor({ email, posts }) {
+//   super(email);
+//    this.posts = posts;
+ // }
+
+ // addPost(post) {
+ //   this.posts.push(post);
+ // }
+//}
+
+//const editor = new ContentEditor({ email: "mango@mail.com", posts: [] });
+//console.log(editor); // { email: 'mango@mail.com', posts: [] }
+//console.log(editor.email); // 'mango@mail.com'
+//editor.addPost("post-1");
+//console.log(editor.posts); // ['post-1']
+ 
+  
+  //Добавь классу Admin следующие свойства и методы.
+
+   // Публичное свойство blacklistedEmails для хранения чёрного списка почтовых адресов пользователей. Значение по умолчанию это пустой массив.
+   // Публичный метод blacklist(email) для добавления почты в чёрный список. Метод должен добавлять значение параметра email в массив хранящийся в свойстве blacklistedEmails.
+   // Публичный метод isBlacklisted(email) для проверки почты в чёрном списке. Метод должен проверять наличие значения параметра email в массиве хранящемся в свойстве blacklistedEmails и возвращать true или false.
+
+//После объявления класса мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+  class User {
+  email;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+class Admin extends User {
+  // Change code below this line
+
+  static AccessLevel = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+
+  constructor({ email, accessLevel }) {
+    super(email);
+    this.accessLevel = accessLevel;
+    this.blacklistedEmails = [];
+  }
+blacklist(email) {
+  this.blacklistedEmails.push(email);
+}
+
+  isBlacklisted(email) {
+ //  return
+ // this.blacklistedEmails.includes(email);
+    if (this.blacklistedEmails.find(blacklistedEmail => blacklistedEmail === email))
+    return true;
+  else return false;
+}
+  // Change code above this line
+  }
+  
+  //
+  //  Объявлен класс Admin
+   // Класс Admin наследует от класса User
+   // У класса Admin есть публичное свойство blacklistedEmails
+   // У класса Admin есть публичный метод blacklist
+   // У класса Admin есть публичный метод isBlacklisted
+   // После вызова mango.blacklist("poly@mail.com") значение свойства blacklistedEmails это массив ["poly@mail.com"]
+   // Вызов mango.isBlacklisted("mango@mail.com") возвращает false
+   // Вызов mango.isBlacklisted("poly@mail.com") возвращает true
+
 }
